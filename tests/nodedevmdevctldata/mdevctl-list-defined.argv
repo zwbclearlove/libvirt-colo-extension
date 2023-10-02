@@ -1,0 +1,4 @@
+mdevctl \
+list \
+--dumpjson \
+--defined

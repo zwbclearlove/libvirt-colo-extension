@@ -1,0 +1,119 @@
+ip6tables \
+-w \
+-A FJ-vnet0 \
+-p ah \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source f:e:d::c:b:a/127 \
+--destination a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p ah \
+--destination f:e:d::c:b:a/127 \
+--source a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j ACCEPT
+ip6tables \
+-w \
+-A HJ-vnet0 \
+-p ah \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source f:e:d::c:b:a/127 \
+--destination a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+ip6tables \
+-w \
+-A FJ-vnet0 \
+-p ah \
+--destination a:b:c::/128 \
+-m dscp \
+--dscp 33 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p ah \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source a:b:c::/128 \
+-m dscp \
+--dscp 33 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j ACCEPT
+ip6tables \
+-w \
+-A HJ-vnet0 \
+-p ah \
+--destination a:b:c::/128 \
+-m dscp \
+--dscp 33 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN
+ip6tables \
+-w \
+-A FJ-vnet0 \
+-p ah \
+--destination ::ffff:10.1.2.3/128 \
+-m dscp \
+--dscp 33 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p ah \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source ::ffff:10.1.2.3/128 \
+-m dscp \
+--dscp 33 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j ACCEPT
+ip6tables \
+-w \
+-A HJ-vnet0 \
+-p ah \
+--destination ::ffff:10.1.2.3/128 \
+-m dscp \
+--dscp 33 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN

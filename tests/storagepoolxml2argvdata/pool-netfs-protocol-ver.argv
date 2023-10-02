@@ -1,0 +1,5 @@
+mount \
+-o nfsvers=4.1 \
+-t nfs \
+localhost:/var/lib/libvirt/images \
+/mnt

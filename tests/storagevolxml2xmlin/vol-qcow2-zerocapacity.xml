@@ -1,0 +1,8 @@
+<volume>
+  <name>OtherDemo.img</name>
+  <target>
+    <path>/var/lib/libvirt/images/OtherDemo.img</path>
+    <format type="qcow2"/>
+  </target>
+  <capacity>0</capacity>
+</volume>

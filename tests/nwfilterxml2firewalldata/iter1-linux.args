@@ -1,0 +1,117 @@
+iptables \
+-w \
+-A FJ-vnet0 \
+-p tcp \
+--source 1.1.1.1 \
+-m dscp \
+--dscp 2 \
+--sport 80 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p tcp \
+--destination 1.1.1.1 \
+-m dscp \
+--dscp 2 \
+--dport 80 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p tcp \
+--source 1.1.1.1 \
+-m dscp \
+--dscp 2 \
+--sport 80 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p tcp \
+--source 2.2.2.2 \
+-m dscp \
+--dscp 2 \
+--sport 90 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p tcp \
+--destination 2.2.2.2 \
+-m dscp \
+--dscp 2 \
+--dport 90 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p tcp \
+--source 2.2.2.2 \
+-m dscp \
+--dscp 2 \
+--sport 90 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p tcp \
+--source 3.3.3.3 \
+-m dscp \
+--dscp 2 \
+--sport 80 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p tcp \
+--destination 3.3.3.3 \
+-m dscp \
+--dscp 2 \
+--dport 80 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p tcp \
+--source 3.3.3.3 \
+-m dscp \
+--dscp 2 \
+--sport 80 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN

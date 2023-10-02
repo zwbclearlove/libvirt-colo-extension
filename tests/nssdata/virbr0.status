@@ -1,0 +1,32 @@
+[
+    {
+        "ip-address": "192.168.122.197",
+        "mac-address": "52:54:00:a4:6f:91",
+        "hostname": "fedora",
+        "expiry-time": 1900000002
+    },
+    {
+        "ip-address": "192.168.122.198",
+        "mac-address": "52:54:00:a4:6f:92",
+        "hostname": "fedora",
+        "expiry-time": 1900000001
+    },
+    {
+        "ip-address": "192.168.122.254",
+        "mac-address": "52:54:00:3a:b5:0c",
+        "hostname": "gentoo",
+        "expiry-time": 2000000000
+    },
+    {
+        "ip-address": "192.168.122.2",
+        "mac-address": "52:54:00:11:22:33",
+        "expiry-time": 2000000000
+    },
+    {
+        "ip-address": "192.168.122.3",
+        "mac-address": "52:54:00:a4:6f:91",
+        "hostname": "fedora",
+        "client-id": "01:52:54:00:a4:6f:91",
+        "expiry-time": 0
+    }
+]

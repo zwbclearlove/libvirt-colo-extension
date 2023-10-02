@@ -1,0 +1,1133 @@
+#
+# Definitions of WMI classes used as input for the hyperv_wmi_generator.py
+# script.
+#
+# This format is line-based, so end-of-line is important.
+#
+#
+# Class definition:
+#
+# class <name>
+#     <type> <name>
+#     ...
+# end
+#
+# Allowed values for <type> are: boolean, string, datetime, int8, int16,
+# int32, int64, uint8, uint16, uint32 and uint64
+#
+# The property <name> can be followed by [] to define a dynamic array.
+#
+#
+# Based on MSDN Hyper-V WMI Classes:
+# https://msdn.microsoft.com/en-us/library/cc136986%28v=vs.85%29.aspx
+#
+
+
+class Msvm_ComputerSystem
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    uint16   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   CreationClassName
+    string   Name
+    string   PrimaryOwnerName
+    string   PrimaryOwnerContact
+    string   Roles[]
+    string   NameFormat
+    string   OtherIdentifyingInfo[]
+    string   IdentifyingDescriptions[]
+    uint16   Dedicated[]
+    string   OtherDedicatedDescriptions[]
+    uint16   ResetCapability
+    uint16   PowerManagementCapabilities[]
+    uint64   OnTimeInMilliseconds
+    uint32   ProcessID
+    datetime TimeOfLastConfigurationChange
+    uint16   NumberOfNumaNodes
+    uint16   ReplicationState
+    uint16   ReplicationHealth
+    uint16   ReplicationMode
+    uint16   FailedOverReplicationType
+    uint16   LastReplicationType
+    datetime LastApplicationConsistentReplicationTime
+    datetime LastReplicationTime
+    datetime LastSuccessfulBackupTime
+    uint16   EnhancedSessionModeState
+end
+
+
+class Msvm_ConcreteJob
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    string   JobStatus
+    datetime TimeSubmitted
+    datetime ScheduledStartTime
+    datetime StartTime
+    datetime ElapsedTime
+    uint32   JobRunTimes
+    uint8    RunMonth
+    sint8    RunDay
+    sint8    RunDayOfWeek
+    datetime RunStartInterval
+    uint16   LocalOrUtcTime
+    datetime UntilTime
+    string   Notify
+    string   Owner
+    uint32   Priority
+    uint16   PercentComplete
+    boolean  DeleteOnCompletion
+    uint16   ErrorCode
+    string   ErrorDescription
+    string   ErrorSummaryDescription
+    uint16   RecoveryAction
+    string   OtherRecoveryAction
+    uint16   JobState
+    datetime TimeOfLastStateChange
+    datetime TimeBeforeRemoval
+    boolean  Cancellable
+    uint16   JobType
+end
+
+
+class Msvm_MemorySettingData
+    string  InstanceID
+    string  Caption
+    string  Description
+    string  ElementName
+    uint16  ResourceType
+    string  OtherResourceType
+    string  ResourceSubType
+    string  PoolID
+    uint16  ConsumerVisibility
+    string  HostResource[]
+    string  AllocationUnits
+    uint64  VirtualQuantity
+    uint64  Reservation
+    uint64  Limit
+    uint32  Weight
+    boolean AutomaticAllocation
+    boolean AutomaticDeallocation
+    string  Parent
+    string  Connection[]
+    string  Address
+    uint16  MappingBehavior
+    string  AddressOnParent
+    string  VirtualQuantityUnits
+    boolean DynamicMemoryEnabled
+    uint32  TargetMemoryBuffer
+    boolean IsVirtualized
+    boolean SwapFilesInUse
+    uint64  MaxMemoryBlocksPerNumaNode
+end
+
+
+class Msvm_ProcessorSettingData
+    string  InstanceID
+    string  Caption
+    string  Description
+    string  ElementName
+    uint16  ResourceType
+    string  OtherResourceType
+    string  ResourceSubType
+    string  PoolID
+    uint16  ConsumerVisibility
+    string  HostResource[]
+    string  AllocationUnits
+    uint64  VirtualQuantity
+    uint64  Reservation
+    uint64  Limit
+    uint32  Weight
+    boolean AutomaticAllocation
+    boolean AutomaticDeallocation
+    string  Parent
+    string  Connection[]
+    string  Address
+    uint16  MappingBehavior
+    string  AddressOnParent
+    string  VirtualQuantityUnits
+    boolean LimitCPUID
+    boolean LimitProcessorFeatures
+    uint64  MaxProcessorsPerNumaNode
+    uint64  MaxNumaNodesPerSocket
+end
+
+
+class Msvm_VirtualSystemSettingData
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    string   VirtualSystemIdentifier
+    string   VirtualSystemType
+    string   Notes[]
+    datetime CreationTime
+    string   ConfigurationID
+    string   ConfigurationDataRoot
+    string   ConfigurationFile
+    string   SnapshotDataRoot
+    string   SuspendDataRoot
+    string   SwapFileDataRoot
+    string   LogDataRoot
+    uint16   AutomaticStartupAction
+    datetime AutomaticStartupActionDelay
+    uint16   AutomaticStartupActionSequenceNumber
+    uint16   AutomaticShutdownAction
+    uint16   AutomaticRecoveryAction
+    string   RecoveryFile
+    string   BIOSGUID
+    string   BIOSSerialNumber
+    string   BaseBoardSerialNumber
+    string   ChassisSerialNumber
+    string   ChassisAssetTag
+    boolean  BIOSNumLock
+    uint16   BootOrder[]
+    string   Parent
+    boolean  IsSaved
+    string   AdditionalRecoveryInformation
+    boolean  AllowFullSCSICommandSet
+    uint32   DebugChannelId
+    uint16   DebugPortEnabled
+    uint32   DebugPort
+    string   Version
+    boolean  IncrementalBackupEnabled
+    boolean  VirtualNumaEnabled
+    boolean  AllowReducedFcRedundancy
+    string   VirtualSystemSubType
+    string   BootSourceOrder[]
+    boolean  PauseAfterBootFailure
+    uint16   NetworkBootPreferredProtocol
+    boolean  SecureBootEnabled
+    uint64   LowMmioGapSize
+end
+
+
+class Win32_ComputerSystem
+    uint16   AdminPasswordStatus
+    boolean  AutomaticManagedPagefile
+    boolean  AutomaticResetBootOption
+    boolean  AutomaticResetCapability
+    uint16   BootOptionOnLimit
+    uint16   BootOptionOnWatchDog
+    boolean  BootROMSupported
+    string   BootupState
+    string   Caption
+    uint16   ChassisBootupState
+    string   CreationClassName
+    int16    CurrentTimeZone
+    boolean  DaylightInEffect
+    string   Description
+    string   DNSHostName
+    string   Domain
+    uint16   DomainRole
+    boolean  EnableDaylightSavingsTime
+    uint16   FrontPanelResetStatus
+    boolean  InfraredSupported
+#    string   InitialLoadInfo # MSDN documents it, but it's not there
+    datetime InstallDate
+    uint16   KeyboardPasswordStatus
+    string   LastLoadInfo
+    string   Manufacturer
+    string   Model
+    string   Name
+    string   NameFormat
+    boolean  NetworkServerModeEnabled
+    uint32   NumberOfLogicalProcessors
+    uint32   NumberOfProcessors
+    uint8    OEMLogoBitmap[]
+    string   OEMStringArray[]
+    boolean  PartOfDomain
+    int64    PauseAfterReset
+    uint16   PCSystemType
+    uint16   PowerManagementCapabilities[]
+    boolean  PowerManagementSupported
+    uint16   PowerOnPasswordStatus
+    uint16   PowerState
+    uint16   PowerSupplyState
+    string   PrimaryOwnerContact
+    string   PrimaryOwnerName
+    uint16   ResetCapability
+    int16    ResetCount
+    int16    ResetLimit
+    string   Roles[]
+    string   Status
+    string   SupportContactDescription[]
+    uint16   SystemStartupDelay
+    string   SystemStartupOptions[]
+    uint8    SystemStartupSetting
+    string   SystemType
+    uint16   ThermalState
+    uint64   TotalPhysicalMemory
+    string   UserName
+    uint16   WakeUpType
+    string   Workgroup
+end
+
+
+class Win32_Processor
+    uint16   AddressWidth
+    uint16   Architecture
+    uint16   Availability
+    string   Caption
+    uint32   ConfigManagerErrorCode
+    boolean  ConfigManagerUserConfig
+    uint16   CpuStatus
+    string   CreationClassName
+    uint32   CurrentClockSpeed
+    uint16   CurrentVoltage
+    uint16   DataWidth
+    string   Description
+    string   DeviceID
+    boolean  ErrorCleared
+    string   ErrorDescription
+    uint32   ExtClock
+    uint16   Family
+    datetime InstallDate
+    uint32   L2CacheSize
+    uint32   L2CacheSpeed
+    uint32   L3CacheSize
+    uint32   L3CacheSpeed
+    uint32   LastErrorCode
+    uint16   Level
+    uint16   LoadPercentage
+    string   Manufacturer
+    uint32   MaxClockSpeed
+    string   Name
+    uint32   NumberOfCores
+    uint32   NumberOfLogicalProcessors
+    string   OtherFamilyDescription
+    string   PNPDeviceID
+    uint16   PowerManagementCapabilities[]
+    boolean  PowerManagementSupported
+    string   ProcessorId
+    uint16   ProcessorType
+    uint16   Revision
+    string   Role
+    string   SocketDesignation
+    string   Status
+    uint16   StatusInfo
+    string   Stepping
+    string   SystemCreationClassName
+    string   SystemName
+    string   UniqueId
+    uint16   UpgradeMethod
+    string   Version
+    uint32   VoltageCaps
+end
+
+
+class CIM_DataFile
+    uint32   AccessMask
+    boolean  Archive
+    string   Caption
+    boolean  Compressed
+    string   CompressionMethod
+    string   CreationClassName
+    datetime CreationDate
+    string   CSCreationClassName
+    string   CSName
+    string   Description
+    string   Drive
+    string   EightDotThreeFileName
+    boolean  Encrypted
+    string   EncryptionMethod
+    string   Extension
+    string   FileName
+    uint64   FileSize
+    string   FileType
+    string   FSCreationClassName
+    string   FSName
+    boolean  Hidden
+    datetime InstallDate
+    uint64   InUseCount
+    datetime LastAccessed
+    datetime LastModified
+    string   Manufacturer
+    string   Name
+    string   Path
+    boolean  Readable
+    string   Status
+    boolean  System
+    string   Version
+    boolean  Writeable
+end
+
+
+class Win32_ComputerSystemProduct
+    string   Caption
+    string   Description
+    string   IdentifyingNumber
+    string   Name
+    string   SKUNumber
+    string   UUID
+    string   Vendor
+    string   Version
+end
+
+
+class Win32_PerfRawData_HvStats_HyperVHypervisorVirtualProcessor
+    uint64   AddressDomainFlushesPersec
+    uint64   AddressSpaceEvictionsPersec
+    uint64   AddressSpaceFlushesPersec
+    uint64   AddressSpaceSwitchesPersec
+    uint64   APICEOIAccessesPersec
+    uint64   APICIPIsSentPersec
+    uint64   APICMMIOAccessesPersec
+    uint64   APICSelfIPIsSentPersec
+    uint64   APICTPRAccessesPersec
+    string   Caption
+    uint64   ControlRegisterAccessesCost
+    uint64   ControlRegisterAccessesCost_Base
+    uint64   ControlRegisterAccessesPersec
+    uint64   CPUIDInstructionsCost
+    uint64   CPUIDInstructionsCost_Base
+    uint64   CPUIDInstructionsPersec
+    uint64   CPUWaitTimePerDispatch
+    uint64   CPUWaitTimePerDispatch_Base
+    uint64   DebugRegisterAccessesCost
+    uint64   DebugRegisterAccessesCost_Base
+    uint64   DebugRegisterAccessesPersec
+    string   Description
+    uint64   EmulatedInstructionsCost
+    uint64   EmulatedInstructionsCost_Base
+    uint64   EmulatedInstructionsPersec
+    uint64   ExternalInterruptsCost
+    uint64   ExternalInterruptsCost_Base
+    uint64   ExternalInterruptsPersec
+    uint64   Frequency_Object
+    uint64   Frequency_PerfTime
+    uint64   Frequency_Sys100NS
+    uint64   GlobalGVARangeFlushesPersec
+    uint64   GPASpaceHypercallsPersec
+    uint64   GuestPageTableMapsPersec
+    uint64   HardwareInterruptsPersec
+    uint64   HLTInstructionsCost
+    uint64   HLTInstructionsCost_Base
+    uint64   HLTInstructionsPersec
+    uint64   HypercallsCost
+    uint64   HypercallsCost_Base
+    uint64   HypercallsPersec
+    uint64   IOInstructionsCost
+    uint64   IOInstructionsCost_Base
+    uint64   IOInstructionsPersec
+    uint64   IOInterceptMessagesPersec
+    uint64   LargePageTLBFillsPersec
+    uint64   LocalFlushedGVARangesPersec
+    uint64   LogicalProcessorDispatchesPersec
+    uint64   LogicalProcessorHypercallsPersec
+    uint64   LogicalProcessorMigrationsPersec
+    uint64   LongSpinWaitHypercallsPersec
+    uint64   MemoryInterceptMessagesPersec
+    uint64   MSRAccessesCost
+    uint64   MSRAccessesCost_Base
+    uint64   MSRAccessesPersec
+    uint64   MWAITInstructionsCost
+    uint64   MWAITInstructionsCost_Base
+    uint64   MWAITInstructionsPersec
+    string   Name
+    uint64   NestedPageFaultInterceptsCost
+    uint64   NestedPageFaultInterceptsCost_Base
+    uint64   NestedPageFaultInterceptsPersec
+    uint64   OtherHypercallsPersec
+    uint64   OtherInterceptsCost
+    uint64   OtherInterceptsCost_Base
+    uint64   OtherInterceptsPersec
+    uint64   OtherMessagesPersec
+    uint64   PageFaultInterceptsCost
+    uint64   PageFaultInterceptsCost_Base
+    uint64   PageFaultInterceptsPersec
+    uint64   PageInvalidationsCost
+    uint64   PageInvalidationsCost_Base
+    uint64   PageInvalidationsPersec
+    uint64   PageTableAllocationsPersec
+    uint64   PageTableEvictionsPersec
+    uint64   PageTableReclamationsPersec
+    uint64   PageTableResetsPersec
+    uint64   PageTableValidationsPersec
+    uint64   PageTableWriteInterceptsPersec
+    uint64   PendingInterruptsCost
+    uint64   PendingInterruptsCost_Base
+    uint64   PendingInterruptsPersec
+    uint64   PercentGuestRunTime
+    uint64   PercentGuestRunTime_Base
+    uint64   PercentHypervisorRunTime
+    uint64   PercentHypervisorRunTime_Base
+    uint64   PercentRemoteRunTime
+    uint64   PercentRemoteRunTime_Base
+    uint64   PercentTotalRunTime
+    uint64   PercentTotalRunTime_Base
+    uint64   ReflectedGuestPageFaultsPersec
+    uint64   SmallPageTLBFillsPersec
+    uint64   SyntheticInterruptHypercallsPersec
+    uint64   SyntheticInterruptsPersec
+    uint64   Timestamp_Object
+    uint64   Timestamp_PerfTime
+    uint64   Timestamp_Sys100NS
+    uint64   TotalInterceptsCost
+    uint64   TotalInterceptsCost_Base
+    uint64   TotalInterceptsPersec
+    uint64   TotalMessagesPersec
+    uint64   VirtualInterruptHypercallsPersec
+    uint64   VirtualInterruptsPersec
+    uint64   VirtualMMUHypercallsPersec
+    uint64   VirtualProcessorHypercallsPersec
+end
+
+
+class Win32_OperatingSystem
+    string   BootDevice
+    string   BuildNumber
+    string   BuildType
+    string   Caption
+    string   CodeSet
+    string   CountryCode
+    string   CreationClassName
+    string   CSCreationClassName
+    string   CSDVersion
+    string   CSName
+    int16    CurrentTimeZone
+    boolean  DataExecutionPrevention_Available
+    boolean  DataExecutionPrevention_32BitApplications
+    boolean  DataExecutionPrevention_Drivers
+    uint8    DataExecutionPrevention_SupportPolicy
+    boolean  Debug
+    string   Description
+    boolean  Distributed
+    uint32   EncryptionLevel
+    uint8    ForegroundApplicationBoost
+    uint64   FreePhysicalMemory
+    uint64   FreeSpaceInPagingFiles
+    uint64   FreeVirtualMemory
+    datetime InstallDate
+    uint32   LargeSystemCache
+    datetime LastBootUpTime
+    datetime LocalDateTime
+    string   Locale
+    string   Manufacturer
+    uint32   MaxNumberOfProcesses
+    uint64   MaxProcessMemorySize
+    string   MUILanguages[]
+    string   Name
+    uint32   NumberOfLicensedUsers
+    uint32   NumberOfProcesses
+    uint32   NumberOfUsers
+    uint32   OperatingSystemSKU
+    string   Organization
+    string   OSArchitecture
+    uint32   OSLanguage
+    uint32   OSProductSuite
+    uint16   OSType
+    string   OtherTypeDescription
+    boolean  PAEEnabled
+    string   PlusProductID
+    string   PlusVersionNumber
+#    boolean  PortableOperatingSystem # Available only on Windows 8 and Windows Server 2012
+    boolean  Primary
+    uint32   ProductType
+    string   RegisteredUser
+    string   SerialNumber
+    uint16   ServicePackMajorVersion
+    uint16   ServicePackMinorVersion
+    uint64   SizeStoredInPagingFiles
+    string   Status
+    uint32   SuiteMask
+    string   SystemDevice
+    string   SystemDirectory
+    string   SystemDrive
+    uint64   TotalSwapSpaceSize
+    uint64   TotalVirtualMemorySize
+    uint64   TotalVisibleMemorySize
+    string   Version
+    string   WindowsDirectory
+end
+
+
+class Msvm_VirtualSystemManagementService
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    uint16   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   PrimaryOwnerName
+    string   PrimaryOwnerContact
+    string   StartMode
+    boolean  Started
+end
+
+
+class Msvm_ResourceAllocationSettingData
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    uint16   ResourceType
+    string   OtherResourceType
+    string   ResourceSubType
+    string   PoolID
+    uint16   ConsumerVisibility
+    string   HostResource[]
+    string   AllocationUnits
+    uint64   VirtualQuantity
+    uint64   Reservation
+    uint64   Limit
+    uint32   Weight
+    boolean  AutomaticAllocation
+    boolean  AutomaticDeallocation
+    string   Parent
+    string   Connection[]
+    string   Address
+    uint16   MappingBehavior
+    string   AddressOnParent
+    string   VirtualQuantityUnits
+    string   VirtualSystemIdentifiers[]
+end
+
+
+class Msvm_SerialPortSettingData : Msvm_ResourceAllocationSettingData
+    boolean  DebuggerMode
+end
+
+
+class Msvm_Keyboard
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    uint16   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   DeviceID
+    boolean  PowerManagementSupported
+    uint16   PowerManagementCapabilities[]
+    uint16   Availability
+    uint16   StatusInfo
+    uint32   LastErrorCode
+    string   ErrorDescription
+    boolean  ErrorCleared
+    string   OtherIdentifyingInfo[]
+    uint64   PowerOnHours
+    uint64   TotalPowerOnHours
+    string   IdentifyingDescriptions[]
+    uint16   AdditionalAvailability[]
+    uint64   MaxQuiesceTime
+    boolean  IsLocked
+    string   Layout
+    uint16   NumberOfFunctionKeys
+    uint16   Password
+    boolean  UnicodeSupported
+end
+
+
+class Msvm_ShutdownComponent
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    uint16   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   DeviceID
+    boolean  PowerManagementSupported
+    uint16   PowerManagementCapabilities[]
+    uint16   Availability
+    uint16   StatusInfo
+    uint32   LastErrorCode
+    string   ErrorDescription
+    boolean  ErrorCleared
+    string   OtherIdentifyingInfo[]
+    uint64   PowerOnHours
+    uint64   TotalPowerOnHours
+    string   IdentifyingDescriptions[]
+    uint16   AdditionalAvailability[]
+    uint64   MaxQuiesceTime
+end
+
+
+class Msvm_DiskDrive
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    uint16   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   DeviceID
+    boolean  PowerManagementSupported
+    uint16   PowerManagementCapabilities[]
+    uint16   Availability
+    uint16   StatusInfo
+    uint32   LastErrorCode
+    string   ErrorDescription
+    boolean  ErrorCleared
+    string   OtherIdentifyingInfo[]
+    uint64   PowerOnHours
+    uint64   TotalPowerOnHours
+    string   IdentifyingDescriptions[]
+    uint16   AdditionalAvailability[]
+    uint64   MaxQuiesceTime
+    uint16   Capabilities[]
+    string   CapabilityDescriptions[]
+    string   ErrorMethodology
+    string   CompressionMethod
+    uint32   NumberOfMediaSupported
+    uint64   MaxMediaSize
+    uint64   DefaultBlockSize
+    uint64   MaxBlockSize
+    uint64   MinBlockSize
+    boolean  NeedsCleaning
+    boolean  MediaIsLocked
+    uint16   Security
+    datetime LastCleaned
+    uint64   MaxAccessTime
+    uint32   UncompressedDataRate
+    uint64   LoadTime
+    uint64   UnloadTime
+    uint64   MountCount
+    datetime TimeOfLastMount
+    uint64   TotalMountTime
+    string   UnitsDescription
+    uint64   MaxUnitsBeforeCleaning
+    uint64   UnitsUsed
+    uint32   DriveNumber
+end
+
+
+class Msvm_StorageAllocationSettingData
+    string  InstanceID
+    string  Caption
+    string  Description
+    string  ElementName
+    uint16  ResourceType
+    string  OtherResourceType
+    string  ResourceSubType
+    string  PoolID
+    uint16  ConsumerVisibility
+    string  HostResource[]
+    string  AllocationUnits
+    uint64  VirtualQuantity
+    uint64  Limit
+    uint32  Weight
+    boolean AutomaticAllocation
+    boolean AutomaticDeallocation
+    string  Parent
+    string  Connection[]
+    string  Address
+    uint16  MappingBehavior
+    string  AddressOnParent
+    uint64  VirtualResourceBlockSize
+    string  VirtualQuantityUnits
+    uint16  Access
+    uint64  HostResourceBlockSize
+    uint64  Reservation
+    uint64  HostExtentStartingAddress
+    string  HostExtentName
+    uint16  HostExtentNameFormat
+    string  OtherHostExtentNameFormat
+    uint16  HostExtentNameNamespace
+    string  OtherHostExtentNameNamespace
+    uint64  IOPSLimit
+    uint64  IOPSReservation
+    string  IOPSAllocationUnits
+    boolean PersistentReservationsSupported
+end
+
+
+class Msvm_SyntheticEthernetPortSettingData
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    uint16   ResourceType
+    string   OtherResourceType
+    string   ResourceSubType
+    string   PoolID
+    uint16   ConsumerVisibility
+    string   HostResource[]
+    string   AllocationUnits
+    uint64   VirtualQuantity
+    uint64   Reservation
+    uint64   Limit
+    uint32   Weight
+    boolean  AutomaticAllocation
+    boolean  AutomaticDeallocation
+    string   Parent
+    string   Connection[]
+    string   Address
+    uint16   MappingBehavior
+    string   AddressOnParent
+    string   VirtualQuantityUnits
+    uint16   DesiredVLANEndpointMode
+    string   OtherEndpointMode
+    string   VirtualSystemIdentifiers[]
+# DeviceNamingEnabled and AllowPacketDirect are not present in Windows Server 2012R2.
+# They were added in Windows 10 and Windows Server 2016.
+# They have been omitted to retain compatibility with Windows Server 2012R2.
+#   boolean  DeviceNamingEnabled
+#   boolean  AllowPacketDirect
+    boolean  StaticMacAddress
+    boolean  ClusterMonitored
+end
+
+
+class Msvm_EthernetPortAllocationSettingData
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    uint16   ResourceType
+    string   OtherResourceType
+    string   ResourceSubType
+    string   PoolID
+    uint16   ConsumerVisibility
+    string   HostResource[]
+    string   AllocationUnits
+    uint64   VirtualQuantity
+    uint64   Reservation
+    uint64   Limit
+    uint32   Weight
+    boolean  AutomaticAllocation
+    boolean  AutomaticDeallocation
+    string   Parent
+    string   Connection[]
+    string   Address
+    uint16   MappingBehavior
+    string   AddressOnParent
+    string   VirtualQuantityUnits
+    uint16   DesiredVLANEndpointMode
+    string   OtherEndpointMode
+    uint16   EnabledState
+    string   RequiredFeatures[]
+    string   RequiredFeatureHints[]
+    string   TestReplicaPoolID
+    string   TestReplicaSwitchName
+end
+
+
+class Msvm_VirtualEthernetSwitch
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    uint16   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   CreationClassName
+    string   Name
+    string   PrimaryOwnerName
+    string   PrimaryOwnerContact
+    string   Roles[]
+    string   NameFormat
+    string   OtherIdentifyingInfo[]
+    string   IdentifyingDescriptions[]
+    uint16   Dedicated[]
+    string   OtherDedicatedDescriptions[]
+    uint16   ResetCapability
+    uint16   PowerManagementCapabilities[]
+    uint32   MaxVMQOffloads
+    uint32   MaxIOVOffloads
+end
+
+
+class Msvm_VirtualEthernetSwitchManagementService
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    uint16   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   PrimaryOwnerName
+    string   PrimaryOwnerContact
+    string   StartMode
+    boolean  Started
+end
+
+
+class Msvm_SyntheticDisplayController
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    string   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   DeviceID
+    boolean  PowerManagementSupported
+    uint16   PowerManagementCapabilities[]
+    uint16   Availability
+    uint16   StatusInfo
+    uint32   LastErrorCode
+    string   ErrorDescription
+    boolean  ErrorCleared
+    uint64   PowerOnHours
+    uint64   TotalPowerOnHours
+    string   OtherIdentifyingInfo[]
+    string   IdentifyingDescriptions[]
+    uint16   AdditionalAvailability[]
+    uint64   MaxQuiesceTime
+    datetime TimeOfLastReset
+    uint16   ProtocolSupported
+    uint32   MaxNumberControlled
+    string   ProtocolDescription
+    string   VideoProcessor
+    uint16   VideoMemoryType
+    string   OtherVideoMemoryType
+    uint32   NumberOfVideoPages
+    uint32   MaxMemorySupported
+    uint16   AcceleratorCapabilities[]
+    string   CapabilityDescriptions[]
+    string   OtherVideoArchitecture
+    uint16   VideoArchitecture
+end
+
+
+class Msvm_S3DisplayController
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    string   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   DeviceID
+    boolean  PowerManagementSupported
+    uint16   PowerManagementCapabilities[]
+    uint16   Availability
+    uint16   StatusInfo
+    uint32   LastErrorCode
+    string   ErrorDescription
+    boolean  ErrorCleared
+    string   OtherIdentifyingInfo[]
+    uint64   PowerOnHours
+    uint64   TotalPowerOnHours
+    string   IdentifyingDescriptions[]
+    uint16   AdditionalAvailability[]
+    uint64   MaxQuiesceTime
+    datetime TimeOfLastReset
+    uint16   ProtocolSupported
+    uint32   MaxNumberControlled
+    string   ProtocolDescription
+    string   VideoProcessor
+    uint16   VideoMemoryType
+    string   OtherVideoMemoryType
+    uint32   NumberOfVideoPages
+    uint32   MaxMemorySupported
+    uint16   AcceleratorCapabilities[]
+    string   CapabilityDescriptions[]
+    string   OtherVideoArchitecture
+    uint16   VideoArchitecture
+end
+
+
+class Msvm_VideoHead
+    string   InstanceID
+    string   Caption
+    string   Description
+    string   ElementName
+    datetime InstallDate
+    string   Name
+    uint16   OperationalStatus[]
+    string   StatusDescriptions[]
+    string   Status
+    uint16   HealthState
+    uint16   CommunicationStatus
+    uint16   DetailedStatus
+    uint16   OperatingStatus
+    uint16   PrimaryStatus
+    string   EnabledState
+    string   OtherEnabledState
+    uint16   RequestedState
+    uint16   EnabledDefault
+    datetime TimeOfLastStateChange
+    uint16   AvailableRequestedStates[]
+    uint16   TransitioningToState
+    string   SystemCreationClassName
+    string   SystemName
+    string   CreationClassName
+    string   DeviceID
+    boolean  PowerManagementSupported
+    uint16   PowerManagementCapabilities[]
+    uint16   Availability
+    uint16   StatusInfo
+    uint32   LastErrorCode
+    string   ErrorDescription
+    boolean  ErrorCleared
+    string   OtherIdentifyingInfo[]
+    uint64   PowerOnHours
+    uint64   TotalPowerOnHours
+    string   IdentifyingDescriptions[]
+    uint16   AdditionalAvailability[]
+    uint64   MaxQuiesceTime
+    uint32   CurrentBitsPerPixel
+    uint32   CurrentHorizontalResolution
+    uint32   CurrentVerticalResolution
+    uint32   MaxRefreshRate
+    uint32   MinRefreshRate
+    uint32   CurrentRefreshRate
+    uint16   CurrentScanMode
+    string   OtherCurrentScanMode
+    uint32   CurrentNumberOfRows
+    uint32   CurrentNumberOfColumns
+    uint64   CurrentNumberOfColors
+end

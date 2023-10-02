@@ -1,0 +1,41 @@
+#
+# SASL-specific symbols
+#
+
+# rpc/virnetclient.h
+virNetClientSetSASLSession;
+
+# rpc/virnetsaslcontext.h
+virNetSASLContextCheckIdentity;
+virNetSASLContextGetTCPMinSSF;
+virNetSASLContextNewClient;
+virNetSASLContextNewServer;
+virNetSASLSessionClientStart;
+virNetSASLSessionClientStep;
+virNetSASLSessionDecode;
+virNetSASLSessionEncode;
+virNetSASLSessionExtKeySize;
+virNetSASLSessionGetIdentity;
+virNetSASLSessionGetKeySize;
+virNetSASLSessionGetMaxBufSize;
+virNetSASLSessionListMechanisms;
+virNetSASLSessionNewClient;
+virNetSASLSessionNewServer;
+virNetSASLSessionSecProps;
+virNetSASLSessionServerStart;
+virNetSASLSessionServerStep;
+
+
+# rpc/virnetserverclient.h
+virNetServerClientGetSASLSession;
+virNetServerClientHasSASLSession;
+virNetServerClientSetSASLSession;
+
+
+# rpc/virnetsocket.h
+virNetSocketSetSASLSession;
+
+# Let emacs know we want case-insensitive sorting
+# Local Variables:
+# sort-fold-case: t
+# End:

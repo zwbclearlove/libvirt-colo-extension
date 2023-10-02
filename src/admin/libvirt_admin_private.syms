@@ -1,0 +1,48 @@
+#
+# General private symbols for libvirt_admin. Add symbols here, and see
+# src/admin/meson.build for more details.
+#
+# Keep this file sorted by header name, then by symbols with each header.
+#
+
+# admin/admin_protocol.x
+xdr_admin_client_close_args;
+xdr_admin_client_get_info_args;
+xdr_admin_client_get_info_ret;
+xdr_admin_connect_get_lib_version_ret;
+xdr_admin_connect_get_logging_filters_args;
+xdr_admin_connect_get_logging_filters_ret;
+xdr_admin_connect_get_logging_outputs_args;
+xdr_admin_connect_get_logging_outputs_ret;
+xdr_admin_connect_list_servers_args;
+xdr_admin_connect_list_servers_ret;
+xdr_admin_connect_lookup_server_args;
+xdr_admin_connect_lookup_server_ret;
+xdr_admin_connect_open_args;
+xdr_admin_connect_set_logging_filters_args;
+xdr_admin_connect_set_logging_outputs_args;
+xdr_admin_server_get_client_limits_args;
+xdr_admin_server_get_client_limits_ret;
+xdr_admin_server_get_threadpool_parameters_args;
+xdr_admin_server_get_threadpool_parameters_ret;
+xdr_admin_server_list_clients_args;
+xdr_admin_server_list_clients_ret;
+xdr_admin_server_lookup_client_args;
+xdr_admin_server_lookup_client_ret;
+xdr_admin_server_set_client_limits_args;
+xdr_admin_server_set_threadpool_parameters_args;
+xdr_admin_server_update_tls_files_args;
+
+# datatypes.h
+virAdmClientClass;
+virAdmConnectClass;
+virAdmConnectCloseCallbackDataRegister;
+virAdmConnectCloseCallbackDataReset;
+virAdmConnectCloseCallbackDataUnregister;
+virAdmGetServer;
+virAdmServerClass;
+
+# Let emacs know we want case-insensitive sorting
+# Local Variables:
+# sort-fold-case: t
+# End:

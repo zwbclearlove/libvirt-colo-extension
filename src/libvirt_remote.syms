@@ -1,0 +1,235 @@
+#
+# Private symbols used in RPC operations. Add symbols here, and see
+# src/remote/meson.build for more details.
+#
+# Keep this file sorted by header name, then by symbols with each header.
+#
+
+# Generated files
+xdr_*;
+# Hack only required for Win32 to make tests link properly,
+# as the wildcard above doesn't work there. Fortunately
+# Win32 builds don't require the other xdr_* syms exported.
+# since there's no libvirtd built.
+xdr_virNetMessageError;
+
+
+# remote/remote_sockets.h
+remoteProbeSessionDriverFromBinary;
+remoteProbeSessionDriverFromSocket;
+remoteProbeSystemDriverFromSocket;
+
+# rpc/virnetclient.h
+virNetClientAddProgram;
+virNetClientAddStream;
+virNetClientClose;
+virNetClientDupFD;
+virNetClientGetFD;
+virNetClientGetTLSKeySize;
+virNetClientHasPassFD;
+virNetClientIsEncrypted;
+virNetClientIsOpen;
+virNetClientKeepAliveIsSupported;
+virNetClientKeepAliveStart;
+virNetClientKeepAliveStop;
+virNetClientLocalAddrStringSASL;
+virNetClientNewExternal;
+virNetClientNewLibSSH2;
+virNetClientNewSSH;
+virNetClientNewTCP;
+virNetClientNewUNIX;
+virNetClientRegisterAsyncIO;
+virNetClientRegisterKeepAlive;
+virNetClientRemoteAddrStringSASL;
+virNetClientRemoveStream;
+virNetClientSendNonBlock;
+virNetClientSendStream;
+virNetClientSendWithReply;
+virNetClientSetCloseCallback;
+virNetClientSetTLSSession;
+virNetClientSSHHelperCommand;
+
+
+# rpc/virnetclientprogram.h
+virNetClientProgramCall;
+virNetClientProgramDispatch;
+virNetClientProgramGetProgram;
+virNetClientProgramGetVersion;
+virNetClientProgramMatches;
+virNetClientProgramNew;
+
+
+# rpc/virnetclientstream.h
+virNetClientStreamCheckSendStatus;
+virNetClientStreamCheckState;
+virNetClientStreamEOF;
+virNetClientStreamEventAddCallback;
+virNetClientStreamEventRemoveCallback;
+virNetClientStreamEventUpdateCallback;
+virNetClientStreamInData;
+virNetClientStreamMatches;
+virNetClientStreamNew;
+virNetClientStreamQueuePacket;
+virNetClientStreamRecvHole;
+virNetClientStreamRecvPacket;
+virNetClientStreamSendHole;
+virNetClientStreamSendPacket;
+virNetClientStreamSetError;
+
+
+# rpc/virnetdaemon.h
+virNetDaemonAddServer;
+virNetDaemonAddShutdownInhibition;
+virNetDaemonAddSignalHandler;
+virNetDaemonAutoShutdown;
+virNetDaemonGetServer;
+virNetDaemonGetServers;
+virNetDaemonHasClients;
+virNetDaemonHasServer;
+virNetDaemonIsPrivileged;
+virNetDaemonNew;
+virNetDaemonNewPostExecRestart;
+virNetDaemonPreExecRestart;
+virNetDaemonQuit;
+virNetDaemonQuitExecRestart;
+virNetDaemonRemoveShutdownInhibition;
+virNetDaemonRun;
+virNetDaemonSetShutdownCallbacks;
+virNetDaemonSetStateStopWorkerThread;
+virNetDaemonUpdateServices;
+
+
+# rpc/virnetmessage.h
+virNetMessageAddFD;
+virNetMessageClear;
+virNetMessageClearFDs;
+virNetMessageClearPayload;
+virNetMessageDecodeHeader;
+virNetMessageDecodeLength;
+virNetMessageDecodeNumFDs;
+virNetMessageDecodePayload;
+virNetMessageDupFD;
+virNetMessageEncodeHeader;
+virNetMessageEncodeNumFDs;
+virNetMessageEncodePayload;
+virNetMessageEncodePayloadRaw;
+virNetMessageFree;
+virNetMessageNew;
+virNetMessageQueuePush;
+virNetMessageQueueServe;
+virNetMessageSaveError;
+
+
+# rpc/virnetserver.h
+virNetServerAddClient;
+virNetServerAddProgram;
+virNetServerAddService;
+virNetServerAddServiceTCP;
+virNetServerAddServiceUNIX;
+virNetServerClose;
+virNetServerGetClient;
+virNetServerGetClients;
+virNetServerGetCurrentClients;
+virNetServerGetCurrentUnauthClients;
+virNetServerGetMaxClients;
+virNetServerGetMaxUnauthClients;
+virNetServerGetName;
+virNetServerGetThreadPoolParameters;
+virNetServerHasClients;
+virNetServerNeedsAuth;
+virNetServerNew;
+virNetServerNewPostExecRestart;
+virNetServerNextClientID;
+virNetServerPreExecRestart;
+virNetServerProcessClients;
+virNetServerSetClientAuthenticated;
+virNetServerSetClientLimits;
+virNetServerSetThreadPoolParameters;
+virNetServerSetTLSContext;
+virNetServerUpdateServices;
+virNetServerUpdateTlsFiles;
+
+
+# rpc/virnetserverclient.h
+virNetServerClientAddFilter;
+virNetServerClientClose;
+virNetServerClientCloseLocked;
+virNetServerClientDelayedClose;
+virNetServerClientGetAuth;
+virNetServerClientGetFD;
+virNetServerClientGetID;
+virNetServerClientGetIdentity;
+virNetServerClientGetInfo;
+virNetServerClientGetPrivateData;
+virNetServerClientGetReadonly;
+virNetServerClientGetSELinuxContext;
+virNetServerClientGetTimestamp;
+virNetServerClientGetTLSKeySize;
+virNetServerClientGetTLSSession;
+virNetServerClientGetTransport;
+virNetServerClientGetUNIXIdentity;
+virNetServerClientHasTLSSession;
+virNetServerClientImmediateClose;
+virNetServerClientInit;
+virNetServerClientInitKeepAlive;
+virNetServerClientIsAuthenticated;
+virNetServerClientIsAuthPendingLocked;
+virNetServerClientIsClosedLocked;
+virNetServerClientIsLocal;
+virNetServerClientIsSecure;
+virNetServerClientLocalAddrStringSASL;
+virNetServerClientNew;
+virNetServerClientNewPostExecRestart;
+virNetServerClientPreExecRestart;
+virNetServerClientRemoteAddrStringSASL;
+virNetServerClientRemoteAddrStringURI;
+virNetServerClientRemoveFilter;
+virNetServerClientSendMessage;
+virNetServerClientSetAuthLocked;
+virNetServerClientSetAuthPendingLocked;
+virNetServerClientSetCloseHook;
+virNetServerClientSetDispatcher;
+virNetServerClientSetIdentity;
+virNetServerClientSetQuietEOF;
+virNetServerClientSetReadonly;
+virNetServerClientStartKeepAlive;
+virNetServerClientWantCloseLocked;
+
+
+# rpc/virnetserverprogram.h
+virNetServerProgramDispatch;
+virNetServerProgramGetID;
+virNetServerProgramGetPriority;
+virNetServerProgramGetVersion;
+virNetServerProgramMatches;
+virNetServerProgramNew;
+virNetServerProgramSendReplyError;
+virNetServerProgramSendStreamData;
+virNetServerProgramSendStreamError;
+virNetServerProgramSendStreamHole;
+virNetServerProgramUnknownError;
+
+
+# rpc/virnetserverservice.h
+virNetServerServiceClose;
+virNetServerServiceGetAuth;
+virNetServerServiceGetMaxRequests;
+virNetServerServiceGetPort;
+virNetServerServiceGetTLSContext;
+virNetServerServiceIsReadonly;
+virNetServerServiceNewFDs;
+virNetServerServiceNewPostExecRestart;
+virNetServerServiceNewTCP;
+virNetServerServiceNewUNIX;
+virNetServerServicePreExecRestart;
+virNetServerServiceSetDispatcher;
+virNetServerServiceTimerActive;
+virNetServerServiceToggle;
+
+
+
+
+# Let emacs know we want case-insensitive sorting
+# Local Variables:
+# sort-fold-case: t
+# End:

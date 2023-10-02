@@ -1,0 +1,24 @@
+[Unit]
+Description=Virtual machine log manager
+Requires=virtlogd.socket
+Requires=virtlogd-admin.socket
+Before=libvirtd.service
+Documentation=man:virtlogd(8)
+Documentation=https://libvirt.org
+
+[Service]
+Environment=VIRTLOGD_ARGS=
+EnvironmentFile=-@initconfdir@/virtlogd
+ExecStart=@sbindir@/virtlogd $VIRTLOGD_ARGS
+ExecReload=/bin/kill -USR1 $MAINPID
+# Losing the logs is a really bad thing that will
+# cause the machine to be fenced (rebooted), so make
+# sure we discourage OOM killer
+OOMScoreAdjust=-900
+# Raise hard limits to match behaviour of systemd >= 240.
+# During startup, daemon will set soft limit to match hard limit
+# per systemd recommendations
+LimitNOFile=512000:1024
+
+[Install]
+Also=virtlogd.socket

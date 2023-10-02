@@ -1,0 +1,16 @@
+#
+# Linux-specific private symbols.
+#
+
+# util/virhostcpu.h
+virHostCPUGetCore;
+virHostCPUGetDie;
+virHostCPUGetInfoPopulateLinux;
+virHostCPUGetSiblingsList;
+virHostCPUGetSocket;
+virHostCPUGetStatsLinux;
+
+# Let emacs know we want case-insensitive sorting
+# Local Variables:
+# sort-fold-case: t
+# End:

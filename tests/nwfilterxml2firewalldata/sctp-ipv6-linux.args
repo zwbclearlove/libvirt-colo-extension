@@ -1,0 +1,128 @@
+ip6tables \
+-w \
+-A FJ-vnet0 \
+-p sctp \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--destination a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p sctp \
+--source a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j ACCEPT
+ip6tables \
+-w \
+-A HJ-vnet0 \
+-p sctp \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--destination a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+ip6tables \
+-w \
+-A FJ-vnet0 \
+-p sctp \
+--destination a:b:c::/128 \
+-m dscp \
+--dscp 33 \
+--dport 20:21 \
+--sport 100:1111 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p sctp \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source a:b:c::/128 \
+-m dscp \
+--dscp 33 \
+--sport 20:21 \
+--dport 100:1111 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j ACCEPT
+ip6tables \
+-w \
+-A HJ-vnet0 \
+-p sctp \
+--destination a:b:c::/128 \
+-m dscp \
+--dscp 33 \
+--dport 20:21 \
+--sport 100:1111 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN
+ip6tables \
+-w \
+-A FJ-vnet0 \
+-p sctp \
+--destination ::ffff:10.1.2.3/128 \
+-m dscp \
+--dscp 63 \
+--dport 255:256 \
+--sport 65535:65535 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p sctp \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source ::ffff:10.1.2.3/128 \
+-m dscp \
+--dscp 63 \
+--sport 255:256 \
+--dport 65535:65535 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j ACCEPT
+ip6tables \
+-w \
+-A HJ-vnet0 \
+-p sctp \
+--destination ::ffff:10.1.2.3/128 \
+-m dscp \
+--dscp 63 \
+--dport 255:256 \
+--sport 65535:65535 \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j RETURN

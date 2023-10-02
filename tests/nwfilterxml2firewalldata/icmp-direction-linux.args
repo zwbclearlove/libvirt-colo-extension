@@ -1,0 +1,39 @@
+iptables \
+-w \
+-A FP-vnet0 \
+-p icmp \
+--icmp-type 0 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-j ACCEPT
+iptables \
+-w \
+-A FJ-vnet0 \
+-p icmp \
+--icmp-type 8 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-j RETURN
+iptables \
+-w \
+-A HJ-vnet0 \
+-p icmp \
+--icmp-type 8 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p icmp \
+-j DROP
+iptables \
+-w \
+-A FP-vnet0 \
+-p icmp \
+-j DROP
+iptables \
+-w \
+-A HJ-vnet0 \
+-p icmp \
+-j DROP

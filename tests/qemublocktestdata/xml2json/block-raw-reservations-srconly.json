@@ -1,0 +1,9 @@
+(
+  source only properties:
+  {
+    "driver": "host_device",
+    "filename": "/dev/blah"
+  }
+  backing store string:
+  /dev/blah
+)

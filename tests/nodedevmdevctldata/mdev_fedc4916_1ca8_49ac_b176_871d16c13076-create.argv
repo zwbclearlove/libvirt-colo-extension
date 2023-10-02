@@ -1,0 +1,4 @@
+mdevctl \
+start \
+--parent=0000:00:02.0 \
+--jsonfile=/dev/stdin

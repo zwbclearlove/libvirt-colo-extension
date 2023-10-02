@@ -1,0 +1,4 @@
+bhyveload \
+-X \
+-Y \
+-Z

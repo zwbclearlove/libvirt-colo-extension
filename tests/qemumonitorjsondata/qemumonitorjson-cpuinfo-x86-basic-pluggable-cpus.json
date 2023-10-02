@@ -1,0 +1,65 @@
+{
+  "return": [
+    {
+      "arch": "x86",
+      "current": true,
+      "cpu-index": 0,
+      "props": {
+        "core-id": 0,
+        "thread-id": 0,
+        "socket-id": 0
+      },
+      "qom-path": "/machine/unattached/device[0]",
+      "thread-id": 518291
+    },
+    {
+      "arch": "x86",
+      "current": false,
+      "cpu-index": 1,
+      "props": {
+        "core-id": 1,
+        "thread-id": 0,
+        "socket-id": 0
+      },
+      "qom-path": "/machine/unattached/device[2]",
+      "thread-id": 518292
+    },
+    {
+      "arch": "x86",
+      "current": false,
+      "cpu-index": 2,
+      "props": {
+        "core-id": 1,
+        "thread-id": 1,
+        "socket-id": 0
+      },
+      "qom-path": "/machine/unattached/device[3]",
+      "thread-id": 518294
+    },
+    {
+      "arch": "x86",
+      "current": false,
+      "cpu-index": 3,
+      "props": {
+        "core-id": 0,
+        "thread-id": 0,
+        "socket-id": 1
+      },
+      "qom-path": "/machine/unattached/device[4]",
+      "thread-id": 518295
+    },
+    {
+      "arch": "x86",
+      "current": false,
+      "cpu-index": 4,
+      "props": {
+        "core-id": 0,
+        "thread-id": 1,
+        "socket-id": 1
+      },
+      "qom-path": "/machine/unattached/device[5]",
+      "thread-id": 518296
+    }
+  ],
+  "id": "libvirt-22"
+}

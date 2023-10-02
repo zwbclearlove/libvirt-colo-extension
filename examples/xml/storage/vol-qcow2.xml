@@ -1,0 +1,8 @@
+<volume type="file">
+  <name>qcow2.img</name>
+  <allocation>0</allocation>
+  <capacity unit="T">1</capacity>
+  <target>
+    <format type="qcow2"/>
+  </target>
+</volume>

@@ -1,0 +1,42 @@
+iptables \
+-w \
+-A FJ-vnet0 \
+-p icmp \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p icmp \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p icmp \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p all \
+-j DROP
+iptables \
+-w \
+-A FP-vnet0 \
+-p all \
+-j DROP
+iptables \
+-w \
+-A HJ-vnet0 \
+-p all \
+-j DROP

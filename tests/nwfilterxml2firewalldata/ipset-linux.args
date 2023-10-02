@@ -1,0 +1,186 @@
+iptables \
+-w \
+-A FJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-m set \
+--match-set tck_test src,dst \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p all \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-m set \
+--match-set tck_test dst,src \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-m set \
+--match-set tck_test src,dst \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p all \
+-m set \
+--match-set tck_test src,dst \
+-m comment \
+--comment in+NONE \
+-j ACCEPT
+iptables \
+-w \
+-A FJ-vnet0 \
+-p all \
+-m set \
+--match-set tck_test src,dst \
+-m comment \
+--comment out+NONE \
+-j RETURN
+iptables \
+-w \
+-A HJ-vnet0 \
+-p all \
+-m set \
+--match-set tck_test src,dst \
+-m comment \
+--comment out+NONE \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-m set \
+--match-set tck_test dst,src,dst \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p all \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-m set \
+--match-set tck_test src,dst,src \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-m set \
+--match-set tck_test dst,src,dst \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-m set \
+--match-set tck_test dst,src,dst \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p all \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-m set \
+--match-set tck_test src,dst,src \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-m set \
+--match-set tck_test dst,src,dst \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-m set \
+--match-set tck_test dst,src \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p all \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-m conntrack \
+--ctdir Original \
+-m set \
+--match-set tck_test src,dst \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p all \
+-m conntrack \
+--ctstate ESTABLISHED \
+-m conntrack \
+--ctdir Reply \
+-m set \
+--match-set tck_test dst,src \
+-j RETURN
+iptables \
+-w \
+-A FJ-vnet0 \
+-p all \
+-m set \
+--match-set tck_test dst,src \
+-m comment \
+--comment inout \
+-j RETURN
+iptables \
+-w \
+-A FP-vnet0 \
+-p all \
+-m set \
+--match-set tck_test src,dst \
+-m comment \
+--comment inout \
+-j ACCEPT
+iptables \
+-w \
+-A HJ-vnet0 \
+-p all \
+-m set \
+--match-set tck_test dst,src \
+-m comment \
+--comment inout \
+-j RETURN

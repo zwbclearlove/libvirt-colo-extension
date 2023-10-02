@@ -1,0 +1,5 @@
+mount \
+-o nosuid,noexec,direct-io-mode=1 \
+-t glusterfs \
+example.com:/volume \
+/mnt/gluster

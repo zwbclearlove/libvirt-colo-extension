@@ -1,0 +1,13 @@
+[Unit]
+Description=@name@ local socket
+Before=@service@.service
+@deps@
+
+[Socket]
+ListenStream=@runstatedir@/libvirt/@sockprefix@-sock
+Service=@service@.service
+SocketMode=@mode@
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target

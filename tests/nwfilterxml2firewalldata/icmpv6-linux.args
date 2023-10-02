@@ -1,0 +1,54 @@
+ip6tables \
+-w \
+-A FJ-vnet0 \
+-p icmpv6 \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source f:e:d::c:b:a/127 \
+--destination a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+--icmpv6-type 12/11 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-j RETURN
+ip6tables \
+-w \
+-A HJ-vnet0 \
+-p icmpv6 \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source f:e:d::c:b:a/127 \
+--destination a:b:c::d:e:f/128 \
+-m dscp \
+--dscp 2 \
+--icmpv6-type 12/11 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-j RETURN
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p icmpv6 \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source a:b:c::/128 \
+-m dscp \
+--dscp 33 \
+--icmpv6-type 255/255 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-j ACCEPT
+ip6tables \
+-w \
+-A FP-vnet0 \
+-p icmpv6 \
+-m mac \
+--mac-source 01:02:03:04:05:06 \
+--source ::ffff:10.1.2.3/128 \
+-m dscp \
+--dscp 33 \
+--icmpv6-type 255/255 \
+-m conntrack \
+--ctstate NEW,ESTABLISHED \
+-j ACCEPT

@@ -1,0 +1,5 @@
+mount \
+-o guest \
+-t cifs \
+//example.com/samba_share \
+/mnt/cifs

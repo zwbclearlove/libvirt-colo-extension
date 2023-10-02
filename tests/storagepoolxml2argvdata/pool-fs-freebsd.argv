@@ -1,0 +1,5 @@
+mount \
+-o nosuid,noexec \
+-t ext3 \
+/dev/sda6 \
+/mnt

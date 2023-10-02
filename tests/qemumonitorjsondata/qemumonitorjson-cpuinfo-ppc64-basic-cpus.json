@@ -1,0 +1,61 @@
+{
+  "return": [
+    {
+      "arch": "ppc",
+      "current": true,
+      "cpu-index": 0,
+      "qom-path": "/machine/unattached/device[1]/thread[0]",
+      "thread-id": 21925
+    },
+    {
+      "arch": "ppc",
+      "current": false,
+      "cpu-index": 1,
+      "qom-path": "/machine/unattached/device[1]/thread[1]",
+      "thread-id": 21926
+    },
+    {
+      "arch": "ppc",
+      "current": false,
+      "cpu-index": 2,
+      "qom-path": "/machine/unattached/device[1]/thread[2]",
+      "thread-id": 21927
+    },
+    {
+      "arch": "ppc",
+      "current": false,
+      "cpu-index": 3,
+      "qom-path": "/machine/unattached/device[1]/thread[3]",
+      "thread-id": 21928
+    },
+    {
+      "arch": "ppc",
+      "current": false,
+      "cpu-index": 4,
+      "qom-path": "/machine/unattached/device[1]/thread[4]",
+      "thread-id": 21930
+    },
+    {
+      "arch": "ppc",
+      "current": false,
+      "cpu-index": 5,
+      "qom-path": "/machine/unattached/device[1]/thread[5]",
+      "thread-id": 21931
+    },
+    {
+      "arch": "ppc",
+      "current": false,
+      "cpu-index": 6,
+      "qom-path": "/machine/unattached/device[1]/thread[6]",
+      "thread-id": 21932
+    },
+    {
+      "arch": "ppc",
+      "current": false,
+      "cpu-index": 7,
+      "qom-path": "/machine/unattached/device[1]/thread[7]",
+      "thread-id": 21933
+    }
+  ],
+  "id": "libvirt-12"
+}

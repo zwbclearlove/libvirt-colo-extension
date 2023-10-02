@@ -1,0 +1,9 @@
+(
+  source only properties:
+  {
+    "driver": "file",
+    "filename": "/var/lib/libvirt/images/i.img"
+  }
+  backing store string:
+  /var/lib/libvirt/images/i.img
+)

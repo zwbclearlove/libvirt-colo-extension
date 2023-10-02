@@ -1,0 +1,24 @@
+[Unit]
+Description=Virtual machine lock manager
+Requires=virtlockd.socket
+Requires=virtlockd-admin.socket
+Before=libvirtd.service
+Documentation=man:virtlockd(8)
+Documentation=https://libvirt.org
+
+[Service]
+Environment=VIRTLOCKD_ARGS=
+EnvironmentFile=-@initconfdir@/virtlockd
+ExecStart=@sbindir@/virtlockd $VIRTLOCKD_ARGS
+ExecReload=/bin/kill -USR1 $MAINPID
+# Losing the locks is a really bad thing that will
+# cause the machine to be fenced (rebooted), so make
+# sure we discourage OOM killer
+OOMScoreAdjust=-900
+# Raise hard limits to match behaviour of systemd >= 240.
+# During startup, daemon will set soft limit to match hard limit
+# per systemd recommendations
+LimitNOFile=512000:1024
+
+[Install]
+Also=virtlockd.socket

@@ -1,0 +1,57 @@
+{
+   glib-memory-leak1
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:pthread_create@@GLIBC_2.34
+   fun:g_system_thread_new
+   ...
+   fun:g_task_get_type_once
+   fun:g_task_get_type
+   fun:_g_dbus_initialize.part.0
+   fun:g_dbus_error_new_for_dbus_error
+   fun:wrap_g_dbus_connection_call_sync
+}
+{
+   glib-memory-leak2
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:g_setenv
+   ...
+   fun:virTestMain
+   fun:main
+}
+{
+   commandtest
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:pthread_create@@GLIBC_2.34
+   fun:virThreadCreateFull
+   fun:virCommandRunAsync
+   fun:test21
+   fun:virTestRun
+   fun:mymain
+   fun:virTestMain
+   fun:main
+}
+{
+   eventtest
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:pthread_create@@GLIBC_2.34
+   fun:mymain
+   fun:virTestMain
+   fun:main
+}
