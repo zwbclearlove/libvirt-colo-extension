@@ -11,3 +11,10 @@ sudo service libvirtd restart
 
 
 ```
+
+## use
+
+use qemu+ssh to connect peer
+```
+#virsh -c qemu+ssh://root@192.168.10.2/system
+```
