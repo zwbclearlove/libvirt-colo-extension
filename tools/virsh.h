@@ -37,6 +37,7 @@
  * Command group types
  */
 #define VIRSH_CMD_GRP_CHECKPOINT       "Checkpoint"
+#define VIRSH_CMD_GRP_COLO             "Colo Management"
 #define VIRSH_CMD_GRP_DOM_MANAGEMENT   "Domain Management"
 #define VIRSH_CMD_GRP_DOM_MONITORING   "Domain Monitoring"
 #define VIRSH_CMD_GRP_DOM_EVENTS       "Domain Events"
@@ -51,6 +52,7 @@
 #define VIRSH_CMD_GRP_BACKUP           "Backup"
 #define VIRSH_CMD_GRP_HOST_AND_HV      "Host and Hypervisor"
 #define VIRSH_CMD_GRP_VIRSH            "Virsh itself"
+
 
 /*
  * Common command options

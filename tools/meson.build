@@ -161,6 +161,7 @@ executable(
     'virsh-backup.c',
     'virsh-checkpoint.c',
     'virsh-completer.c',
+    'virsh-colo.c',
     'virsh-completer-domain.c',
     'virsh-completer-checkpoint.c',
     'virsh-completer-host.c',
