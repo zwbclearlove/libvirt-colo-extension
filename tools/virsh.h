@@ -176,3 +176,4 @@ typedef enum {
 } virshLookupByFlags;
 
 virConnectPtr virshConnect(vshControl *ctl, const char *uri, bool readonly);
+int virshReconnect(vshControl *ctl, const char *name, bool readonly, bool force);

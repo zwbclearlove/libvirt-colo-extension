@@ -188,7 +188,7 @@ virshConnect(vshControl *ctl, const char *uri, bool readonly)
  * Reconnect after a disconnect from libvirtd
  *
  */
-static int
+int
 virshReconnect(vshControl *ctl, const char *name, bool readonly, bool force)
 {
     bool connected = false;

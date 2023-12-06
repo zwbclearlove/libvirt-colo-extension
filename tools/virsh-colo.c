@@ -28,6 +28,7 @@
 #include "virfile.h"
 #include "virsh-util.h"
 #include "virxml.h"
+#include "virsh.h"
 #include "vsh-table.h"
 #include "virsh-completer-domain.h"
 /*
@@ -38,22 +39,21 @@ static const vshCmdInfo info_colo_connect_peer[] = {
      .data = N_("connect peer libvirt")
     },
     {.name = "desc",
-     .data = N_("connect peer libvirt and record it "
-                "as backup node")
+     .data = N_("connect peer libvirt and record it ")
     },
     {.name = NULL}
 };
 
 static const vshCmdOptDef opts_colo_connect_peer[] = {
-    {.name = "name",
+    {.name = "uri",
      .type = VSH_OT_STRING,
      .flags = VSH_OFLAG_EMPTY_OK,
      .completer = virshCompleteEmpty,
      .help = N_("hypervisor connection URI")
     },
-    {.name = "readonly",
-     .type = VSH_OT_BOOL,
-     .help = N_("read-only connection")
+    {.name = "peer-type",
+     .type = VSH_OT_STRING,
+     .help = N_("peer libvirt type")
     },
     {.name = NULL}
 };
@@ -62,24 +62,38 @@ static bool
 cmdColoConnectPeer(vshControl *ctl,
                     const vshCmd *cmd)
 {
-    
-    bool ro = vshCommandOptBool(cmd, "readonly");
-    const char *name = NULL;
+    bool ret = false;
+    const char *uri = NULL;
+    const char *peerType = NULL;
+    //char* errorInfo = NULL;
 
-    if (ro) {
-        vshPrint(ctl, "--readonly. \n");
-    } else {
-        vshPrint(ctl, "no readonly flag. \n");
+    //virshControl* priv = ctl->privData;
+
+
+    if (vshCommandOptStringReq(ctl, cmd, "uri", &uri) < 0) {
+        return false;
+    }
+    if (vshCommandOptStringReq(ctl, cmd, "peer-type", &peerType) < 0) {
+        return false;
+    }
+    vshPrintExtra(ctl, _("uri : %s\npeer type : %s\n"), uri, peerType);
+
+    if (virshReconnect(ctl, uri, false, true) < 0) {
+        vshError(ctl, _("Failed to connect peer libvirt."));
+        goto cleanup;
     }
 
-    if (vshCommandOptStringReq(ctl, cmd, "name", &name) < 0)
-        return false;
+    // if (virColoSavePeerUri(priv->conn, &errorInfo) < 0) {
+    //     vshError(ctl, _("Failed to save peer info"));
+    //     goto cleanup;
+    // }
 
-    // if (virshReconnect(ctl, name, ro, true) < 0)
-    //     return false;
     vshPrint(ctl, "connect peer libvirt success. \n");
 
-    return true;
+    ret = true;
+
+cleanup:
+    return ret;
 }
 
 

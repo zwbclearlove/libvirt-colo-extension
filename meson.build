@@ -1421,6 +1421,11 @@ if remote_default_mode == 'direct'
   conf.set('REMOTE_DRIVER_AUTOSTART_DIRECT', '1')
 endif
 
+message('driver_libvirtd_value : ')
+message(get_option('driver_libvirtd').disabled())
+message('WITH_REMOTE_value : ')
+message(conf.has('WITH_REMOTE'))
+
 if not get_option('driver_libvirtd').disabled()
   use_libvirtd = true
 
@@ -1442,6 +1447,9 @@ if not get_option('driver_libvirtd').disabled()
     conf.set('WITH_LIBVIRTD', 1)
   endif
 endif
+
+message('with_libvirtd_value : ')
+message(conf.has('WITH_LIBVIRTD'))
 
 if not get_option('driver_bhyve').disabled() and host_machine.system() == 'freebsd'
   bhyve_prog = find_program('bhyve', required: get_option('driver_bhyve'))

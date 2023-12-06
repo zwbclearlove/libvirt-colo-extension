@@ -933,3 +933,8 @@ LIBVIRT_9.0.0 {
 } LIBVIRT_8.5.0;
 
 # .... define new API here using predicted next version number ....
+
+LIBVIRT_9.1.0 {
+    global:
+        virColoSavePeerStatus;
+} LIBVIRT_9.0.0;
