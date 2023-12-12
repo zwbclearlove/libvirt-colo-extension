@@ -2,6 +2,7 @@ libvirt_common_h_in = files('libvirt-common.h.in')
 
 libvirt_include = files(
   'libvirt-admin.h',
+  'libvirt-colo.h',
   'libvirt-domain-checkpoint.h',
   'libvirt-domain.h',
   'libvirt-domain-snapshot.h',

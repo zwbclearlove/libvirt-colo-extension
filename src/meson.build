@@ -277,6 +277,7 @@ subdir('vz')
 driver_sources = files(
   'driver.c',
   'libvirt.c',
+  'libvirt-colo.c',
   'libvirt-domain.c',
   'libvirt-domain-checkpoint.c',
   'libvirt-domain-snapshot.c',

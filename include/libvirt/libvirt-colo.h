@@ -13,13 +13,27 @@
 #  error "Don't include this file directly, only use libvirt/libvirt.h"
 # endif
 
+/**
+* coloPeerStatus:
+*
+* COLO peer libvirt status
+* 
+* Since: 9.1.0
+*/
 typedef enum {
-    VIRSH_COLO_PEER_NONE,
-    VIRSH_COLO_PEER_PRIMARY,
-    VIRSH_COLO_PEER_SECONDARY,
-    VIRSH_COLO_PEER_ERROR,
+    VIRSH_COLO_PEER_NONE, /* COLO peer status none (Since: 9.1.0) */
+    VIRSH_COLO_PEER_PRIMARY, /* COLO peer status primary (Since: 9.1.0) */
+    VIRSH_COLO_PEER_SECONDARY, /* COLO peer status secondary (Since: 9.1.0) */
+    VIRSH_COLO_PEER_ERROR, /* COLO peer status error (Since: 9.1.0) */
 } coloPeerStatus;
 
+/**
+* _coloPeerState:
+*
+* COLO peer libvirt status
+* 
+* Since: 9.1.0
+*/
 struct _coloPeerState {
     virConnectPtr curConn;                  /* pointer to current peer connection */
     virConnectPtr peerConn;                  /* pointer to the colo peer connection */
@@ -27,7 +41,23 @@ struct _coloPeerState {
     //...
 };
 
+/**
+ * coloPeerState:
+ *
+ * A coloPeerState is a private structure representing a pper state of
+ * a libvirt.  
+ * 
+ * Since: 9.1.0
+ */
 typedef struct _coloPeerState coloPeerState;
+
+/**
+ * coloPeerPtr:
+ *
+ * A coloPeerPtr is pointer to a coloPeerState private structure.
+ *
+ * Since: 9.1.0
+ */
 typedef coloPeerState *coloPeerPtr;
 
 

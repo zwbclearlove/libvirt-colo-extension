@@ -2324,6 +2324,7 @@ exit 0
 %{_includedir}/libvirt/virterror.h
 %{_includedir}/libvirt/libvirt.h
 %{_includedir}/libvirt/libvirt-admin.h
+%{_includedir}/libvirt/libvirt-colo.h
 %{_includedir}/libvirt/libvirt-common.h
 %{_includedir}/libvirt/libvirt-domain.h
 %{_includedir}/libvirt/libvirt-domain-checkpoint.h
@@ -2383,6 +2384,7 @@ exit 0
 %{mingw32_datadir}/libvirt/test-screenshot.png
 %dir %{mingw32_includedir}/libvirt
 %{mingw32_includedir}/libvirt/libvirt.h
+%{mingw32_includedir}/libvirt/libvirt-colo.h
 %{mingw32_includedir}/libvirt/libvirt-common.h
 %{mingw32_includedir}/libvirt/libvirt-domain.h
 %{mingw32_includedir}/libvirt/libvirt-domain-checkpoint.h
@@ -2440,6 +2442,7 @@ exit 0
 %{mingw64_datadir}/libvirt/test-screenshot.png
 %dir %{mingw64_includedir}/libvirt
 %{mingw64_includedir}/libvirt/libvirt.h
+%{mingw64_includedir}/libvirt/libvirt-colo.h
 %{mingw64_includedir}/libvirt/libvirt-common.h
 %{mingw64_includedir}/libvirt/libvirt-domain.h
 %{mingw64_includedir}/libvirt/libvirt-domain-checkpoint.h

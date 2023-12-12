@@ -895,3 +895,7 @@ virQEMUCapsProbeHVF(virQEMUCaps *qemuCaps) G_NO_INLINE;
 
 virArch virQEMUCapsArchFromString(const char *arch);
 const char *virQEMUCapsArchToString(virArch arch);
+
+
+int virQEMUCapsColoSavePeerStatus(virConnectPtr conn,
+                                const char *uri);

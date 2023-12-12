@@ -52,6 +52,7 @@
 #include "qemu_saveimage.h"
 #include "qemu_snapshot.h"
 #include "qemu_validate.h"
+#include "qemu_colo.h"
 
 #include "virerror.h"
 #include "virlog.h"
@@ -19912,6 +19913,12 @@ qemuDomainFDAssociate(virDomainPtr domain,
     return ret;
 }
 
+static int
+qemuColoSavePeerStatus(virConnectPtr conn, const char *uri) {
+    VIR_DEBUG("in qemu-driver.c qemuColoSavePeerStatus\n conn=%p\n uri: %s\n", conn, uri);
+    return 0;
+}
+
 
 static virHypervisorDriver qemuHypervisorDriver = {
     .name = QEMU_DRIVER_NAME,
@@ -20162,6 +20169,7 @@ static virHypervisorDriver qemuHypervisorDriver = {
     .domainStartDirtyRateCalc = qemuDomainStartDirtyRateCalc, /* 7.2.0 */
     .domainSetLaunchSecurityState = qemuDomainSetLaunchSecurityState, /* 8.0.0 */
     .domainFDAssociate = qemuDomainFDAssociate, /* 9.0.0 */
+    .coloSavePeerStatus = qemuColoSavePeerStatus, /* 9.1.0 */
 };
 
 

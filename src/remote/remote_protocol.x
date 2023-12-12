@@ -3935,6 +3935,15 @@ struct remote_domain_fd_associate_args {
     remote_nonnull_string name;
     unsigned int flags;
 };
+
+struct remote_colo_save_peer_status_args {
+    remote_nonnull_string uri;
+};
+
+struct remote_colo_save_peer_status_ret {
+    int result;
+};
+
 /*----- Protocol. -----*/
 
 /* Define the program number, protocol version and procedure numbers here. */
@@ -6974,5 +6983,12 @@ enum remote_procedure {
      * @generate: none
      * @acl: domain:write
      */
-    REMOTE_PROC_DOMAIN_FD_ASSOCIATE = 443
+    REMOTE_PROC_DOMAIN_FD_ASSOCIATE = 443,
+
+    /**
+     * @generate: both
+     * @priority: high
+     * @acl: connect:read
+     */
+    REMOTE_PROC_COLO_SAVE_PEER_STATUS = 444
 };

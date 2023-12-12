@@ -1448,6 +1448,11 @@ typedef int
                            int *fds,
                            unsigned int flags);
 
+typedef int
+(*virDrvColoSavePeerStatus)(virConnectPtr conn,
+                            const char *uri);
+
+
 typedef struct _virHypervisorDriver virHypervisorDriver;
 
 /**
@@ -1720,4 +1725,5 @@ struct _virHypervisorDriver {
     virDrvDomainGetMessages domainGetMessages;
     virDrvDomainStartDirtyRateCalc domainStartDirtyRateCalc;
     virDrvDomainFDAssociate domainFDAssociate;
+    virDrvColoSavePeerStatus coloSavePeerStatus;
 };

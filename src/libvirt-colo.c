@@ -29,21 +29,33 @@ VIR_LOG_INIT("libvirt.colo");
 
 /**
  * virColoSavePeerStatus:
+ * @conn: peer libvirt conn
  * @uri: peer libvirt uri
  *
  * Save COLO peer status
  *
+ * Returns the result.
+ * 
  * Since: 9.1.0
  */
 int virColoSavePeerStatus(virConnectPtr conn, const char *uri) {
+    int ret;
     VIR_DEBUG("in libvirt-colo.c virColoSavePeerStatus\n conn=%p\n uri: %s\n", conn, uri);
     virResetLastError();
-    return 0;
-//     virCheckConnectReturn(conn, -1);
-    
 
+    virCheckConnectReturn(conn, -1);
 
-// error:
-//     virDispatchError(conn);
-//     return -1;
+    if (conn->driver->coloSavePeerStatus) {
+        VIR_DEBUG("conn->driver->coloSavePeerStatus exists! \n");
+        ret = conn->driver->coloSavePeerStatus(conn, uri);
+        if (ret != 0) {
+            goto error;
+        }
+        return ret;
+    }
+    virReportUnsupportedError();
+
+error:
+    virDispatchError(conn);
+    return -1;
 }

@@ -67,7 +67,7 @@ cmdColoConnectPeer(vshControl *ctl,
     const char *peerType = NULL;
     //char* errorInfo = NULL;
 
-    //virshControl* priv = ctl->privData;
+    virshControl* priv = ctl->privData;
 
 
     if (vshCommandOptStringReq(ctl, cmd, "uri", &uri) < 0) {
@@ -83,10 +83,10 @@ cmdColoConnectPeer(vshControl *ctl,
         goto cleanup;
     }
 
-    // if (virColoSavePeerUri(priv->conn, &errorInfo) < 0) {
-    //     vshError(ctl, _("Failed to save peer info"));
-    //     goto cleanup;
-    // }
+    if (virColoSavePeerStatus(priv->conn, uri) < 0) {
+        vshError(ctl, _("Failed to save peer info"));
+        goto cleanup;
+    }
 
     vshPrint(ctl, "connect peer libvirt success. \n");
 

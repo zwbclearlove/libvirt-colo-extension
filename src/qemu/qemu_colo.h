@@ -1,7 +1,5 @@
 /*
- * virsh-colo.h: Commands to manage colo
- * 
- * Copyright (C) 2005, 2007-2012 Red Hat, Inc.
+ * qemu_colo.h: Implementation and handling of qemu-colo
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,16 +18,8 @@
 
 #pragma once
 
-#include "virsh.h"
+#include "virconftypes.h"
+#include "qemu_conf.h"
 
-#include "virsh-completer.h"
-
-
-
-
-
-
-
-
-extern const vshCmdDef coloCmds[];
-
+// int 
+// qemuColoSavePeerStatus(virConnectPtr conn, const char *uri);
