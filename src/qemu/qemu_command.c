@@ -3880,7 +3880,7 @@ qemuBuildHostNetProps(virDomainObj *vm,
         g_autofree char *tapfd_arg = NULL;
         const char *vhostfd_field = "S:vhostfd";
         g_autofree char *vhostfd_arg = NULL;
-        bool vhost = false;
+        //bool vhost = false;
         size_t nfds;
         GSList *n;
 
@@ -3900,7 +3900,7 @@ qemuBuildHostNetProps(virDomainObj *vm,
 
         if (netpriv->vhostfds) {
             //vhost = true;
-            vhost = false;    
+            //vhost = false;    
             nfds = 0;
             for (n = netpriv->vhostfds; n; n = n->next) {
                 virBufferAsprintf(&buf, "%s:", qemuFDPassDirectGetPath(n->data));
@@ -3914,10 +3914,16 @@ qemuBuildHostNetProps(virDomainObj *vm,
         virBufferTrim(&buf, ":");
         vhostfd_arg = virBufferContentAndReset(&buf);
 
+        // if (virJSONValueObjectAdd(&netprops,
+        //                           "s:type", "tap",
+        //                           tapfd_field, tapfd_arg,
+        //                           "B:vhost", vhost,
+        //                           vhostfd_field, vhostfd_arg,
+        //                           NULL) < 0)
         if (virJSONValueObjectAdd(&netprops,
                                   "s:type", "tap",
                                   tapfd_field, tapfd_arg,
-                                  "B:vhost", vhost,
+                                  "s:vhost", "off",
                                   vhostfd_field, vhostfd_arg,
                                   NULL) < 0)
             return NULL;
