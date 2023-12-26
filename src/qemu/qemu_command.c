@@ -220,6 +220,7 @@ qemuBuildNetdevCommandlineFromJSON(virCommand *cmd,
             return -1;
 
         arg = virBufferContentAndReset(&buf);
+        printf("in qemuBuildNetdevCommandlineFromJSON arg : %s\n", arg);
     }
 
     virCommandAddArgList(cmd, "-netdev", arg, NULL);
@@ -3898,8 +3899,8 @@ qemuBuildHostNetProps(virDomainObj *vm,
         tapfd_arg = virBufferContentAndReset(&buf);
 
         if (netpriv->vhostfds) {
-            vhost = true;
-
+            //vhost = true;
+            vhost = false;    
             nfds = 0;
             for (n = netpriv->vhostfds; n; n = n->next) {
                 virBufferAsprintf(&buf, "%s:", qemuFDPassDirectGetPath(n->data));

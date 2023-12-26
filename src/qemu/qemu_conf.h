@@ -26,6 +26,7 @@
 #include "virebtables.h"
 #include "internal.h"
 #include "domain_conf.h"
+#include "colo_conf.h"
 #include "checkpoint_conf.h"
 #include "snapshot_conf.h"
 #include "domain_event.h"
@@ -317,6 +318,8 @@ struct _virQEMUDriver {
 
     /* Immutable pointer, self-locking APIs */
     virHashAtomic *migrationErrors;
+
+    virColoPeerState *coloPeerState;
 };
 
 virQEMUDriverConfig *virQEMUDriverConfigNew(bool privileged,

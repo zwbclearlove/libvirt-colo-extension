@@ -567,6 +567,8 @@ qemuStateInitialize(bool privileged,
 
     qemu_driver = g_new0(virQEMUDriver, 1);
 
+    qemu_driver->coloPeerState = NULL;
+
     qemu_driver->lockFD = -1;
 
     if (virMutexInit(&qemu_driver->lock) < 0) {
@@ -1086,6 +1088,7 @@ qemuStateCleanup(void)
 
     virObjectUnref(qemu_driver->config);
     virMutexDestroy(&qemu_driver->lock);
+    if (qemu_driver->coloPeerState != NULL)
     VIR_FREE(qemu_driver);
 
     return 0;
@@ -19916,6 +19919,8 @@ qemuDomainFDAssociate(virDomainPtr domain,
 static int
 qemuColoSavePeerStatus(virConnectPtr conn, const char *uri) {
     VIR_DEBUG("in qemu-driver.c qemuColoSavePeerStatus\n conn=%p\n uri: %s\n", conn, uri);
+    
+
     return 0;
 }
 

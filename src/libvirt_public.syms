@@ -937,4 +937,5 @@ LIBVIRT_9.0.0 {
 LIBVIRT_9.1.0 {
     global:
         virColoSavePeerStatus;
+        virColoConfigLoadFile;
 } LIBVIRT_9.0.0;

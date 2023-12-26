@@ -23,9 +23,62 @@
 #include "datatypes.h"
 #include "virlog.h"
 
+
 VIR_LOG_INIT("libvirt.colo");
 
 #define VIR_FROM_THIS VIR_FROM_NONE
+
+/**
+ * virColoConfigLoadFile:
+ * @cfg: colo config
+ * @filename: colo config file path
+ * 
+ * get colo config from filename
+ *
+ * Returns result.
+ * 
+ * Since: 9.1.0
+ */
+int virColoConfigLoadFile(virColoConfig *cfg, const char *filename) {
+    g_autoptr(virConf) conf = NULL;
+    int rv;
+    char* tmp = g_new0(char, 10);
+    /* Just check the file is readable before opening it, otherwise
+     * libvirt emits an error.
+     */
+    
+    if (access(filename, R_OK) == -1) {
+        VIR_INFO("Could not read colo config file %s", filename);
+        return 0;
+    }
+
+    if (!(conf = virConfReadFile(filename, 0)))
+        return -1;
+    
+
+    if ((rv = virConfGetValueString(conf, "colo_local_libvirt_status", &tmp)) < 0)
+        return -1;
+    
+    if (strcmp(tmp, "PRIMARY") == 0) {
+        cfg->colo_local_libvirt_status = VIRSH_COLO_PEER_PRIMARY;
+    } else {
+        cfg->colo_local_libvirt_status = VIRSH_COLO_PEER_SECONDARY;
+    }
+    if ((rv = virConfGetValueString(conf, "colo_peer_libvirt_status", &tmp)) < 0)
+        return -1;
+    
+    if (strcmp(tmp, "PRIMARY") == 0) {
+        cfg->colo_peer_libvirt_status = VIRSH_COLO_PEER_PRIMARY;
+    } else {
+        cfg->colo_peer_libvirt_status = VIRSH_COLO_PEER_SECONDARY;
+    }
+
+    if ((rv = virConfGetValueString(conf, "colo_peer_libvirt_uri", &cfg->colo_peer_libvirt_uri)) < 0)
+        return -1;
+    g_free(tmp);
+    return 0;
+}
+
 
 /**
  * virColoSavePeerStatus:
@@ -59,3 +112,17 @@ error:
     virDispatchError(conn);
     return -1;
 }
+
+
+/**
+ * virColoGetColoVMList:
+ *
+ * Get Colo enabled VM list
+ *
+ * Returns the result..
+ * 
+ * Since: 9.1.0
+ */
+
+
+

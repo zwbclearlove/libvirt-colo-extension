@@ -1,7 +1,9 @@
 /*
- * virsh-colo.h: Commands to manage colo
- * 
- * Copyright (C) 2005, 2007-2012 Red Hat, Inc.
+ * colo_conf.h: domain checkpoint XML processing
+ *                 (based on snapshot_conf.h)
+ *
+ * Copyright (C) 2006-2019 Red Hat, Inc.
+ * Copyright (C) 2006-2008 Daniel P. Berrange
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,16 +21,4 @@
  */
 
 #pragma once
-
-#include "virsh.h"
-
-#include "virsh-completer.h"
-#include "libvirt/libvirt.h"
-
-
-
-
-
-
-extern const vshCmdDef coloCmds[];
 

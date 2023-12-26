@@ -602,6 +602,7 @@ struct _virDomain {
     char *name;                          /* the domain external name */
     int id;                              /* the domain ID */
     unsigned char uuid[VIR_UUID_BUFLEN]; /* the domain unique identifier */
+    bool coloEnable;
 };
 
 /**

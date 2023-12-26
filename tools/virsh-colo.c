@@ -124,23 +124,43 @@ static bool
 cmdColoConnectStatus(vshControl *ctl,
                     const vshCmd *cmd)
 {
-    
+    char *coloConf = NULL;
+    virColoConfig* cfg;
     bool ret = false;
-    // char *buffer;
+    
+    cfg = g_new0(virColoConfig, 1);
+    coloConf = g_strdup("/home/ubuntu/config/colo.conf");
+    if (virColoConfigLoadFile(cfg, coloConf) < 0)
+        goto cleanup;    
+    
     if (vshCommandOptBool(cmd, "local")) {
-        vshPrint(ctl, "local libvirt status : \n");
-        vshPrint(ctl, "-----------------------\n");
-    } else {
-        vshPrint(ctl, "without local flag!!!\n");
+        vshPrint(ctl, "-------------------------------------------\n");
+        vshPrintExtra(ctl, "local uri: qemu:///system\n");
+        vshPrintExtra(ctl, "local status: %s\n", 
+        (cfg->colo_peer_libvirt_status == VIRSH_COLO_PEER_PRIMARY) ?
+        "SECONDARY" : "PRIMARY");
+        if (virshReconnect(ctl, "qemu:///system", false, true) < 0) {
+            vshError(ctl, _("Failed to connect local libvirt."));
+            goto cleanup;
+        }
+        vshPrintExtra(ctl, "local connection: active\n");
+        vshPrint(ctl, "-------------------------------------------\n");
+    }
+    vshPrint(ctl, "-------------------------------------------\n");
+    vshPrintExtra(ctl, "peer uri: %s\n", cfg->colo_peer_libvirt_uri);
+    vshPrintExtra(ctl, "peer status: %s\n", 
+        (cfg->colo_peer_libvirt_status == VIRSH_COLO_PEER_PRIMARY) ?
+        "PRIMARY" : "SECONDARY");
+    if (virshReconnect(ctl, cfg->colo_peer_libvirt_uri, false, true) < 0) {
+        vshError(ctl, _("Failed to connect peer libvirt."));
         goto cleanup;
     }
-        
-    
-    vshPrint(ctl, "peer libvirt status : \n");
-    vshPrint(ctl, "----------------------\n");
+    vshPrintExtra(ctl, "peer connection: active\n");
+    vshPrint(ctl, "-------------------------------------------\n");
 
     ret = true;
-    cleanup:
+cleanup:
+    g_free(cfg);
     return ret;
 }
 
