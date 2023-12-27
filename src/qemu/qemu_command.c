@@ -3878,8 +3878,8 @@ qemuBuildHostNetProps(virDomainObj *vm,
         /* for one tapfd/vhostfd 'fd=' shall be used, for more use 'fds=' */
         const char *tapfd_field = "s:fd";
         g_autofree char *tapfd_arg = NULL;
-        const char *vhostfd_field = "S:vhostfd";
-        g_autofree char *vhostfd_arg = NULL;
+        //const char *vhostfd_field = "S:vhostfd";
+        //g_autofree char *vhostfd_arg = NULL;
         //bool vhost = false;
         size_t nfds;
         GSList *n;
@@ -3907,12 +3907,12 @@ qemuBuildHostNetProps(virDomainObj *vm,
                 nfds++;
             }
 
-            if (nfds > 1)
-                vhostfd_field = "s:vhostfds";
+            //if (nfds > 1)
+                //vhostfd_field = "s:vhostfds";
         }
 
         virBufferTrim(&buf, ":");
-        vhostfd_arg = virBufferContentAndReset(&buf);
+        //vhostfd_arg = virBufferContentAndReset(&buf);
 
         // if (virJSONValueObjectAdd(&netprops,
         //                           "s:type", "tap",
@@ -3924,7 +3924,7 @@ qemuBuildHostNetProps(virDomainObj *vm,
                                   "s:type", "tap",
                                   tapfd_field, tapfd_arg,
                                   "s:vhost", "off",
-                                  vhostfd_field, vhostfd_arg,
+                                  //vhostfd_field, vhostfd_arg,
                                   NULL) < 0)
             return NULL;
 
