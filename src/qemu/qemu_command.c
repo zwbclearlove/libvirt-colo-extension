@@ -1755,7 +1755,8 @@ qemuBuildDiskDeviceProps(const virDomainDef *def,
     g_autoptr(virJSONValue) props = NULL;
     const char *driver = NULL;
     g_autofree char *scsiVPDDeviceId = NULL;
-    virTristateSwitch shareRW = VIR_TRISTATE_SWITCH_ABSENT;
+    //virTristateSwitch shareRW = VIR_TRISTATE_SWITCH_ABSENT;
+    virTristateSwitch shareRW = VIR_TRISTATE_SWITCH_ON;
     g_autofree char *chardev = NULL;
     g_autofree char *drive = NULL;
     unsigned int bootindex = 0;

@@ -471,8 +471,7 @@ if get_option('warning_level') == '2'
   if supported_cc_flags.contains('-Wlogical-op')
     # Broken in 6.0 and later
     #     https://gcc.gnu.org/bugzilla/show_bug.cgi?id=69602
-    # update
-    w_logical_op_args = [ '-O0', '-Wlogical-op', '-Werror' ]
+    w_logical_op_args = [ '-O2', '-Wlogical-op', '-Werror' ]
     w_logical_op_code = '''
       #define TEST1 1
       #define TEST2 TEST1
@@ -488,8 +487,7 @@ if get_option('warning_level') == '2'
   endif
 
   # Check whether clang gives bogus warning for -Wdouble-promotion.
-  # update
-  w_double_promotion_args = [ '-O0', '-Wdouble-promotion', '-Werror' ]
+  w_double_promotion_args = [ '-O2', '-Wdouble-promotion', '-Werror' ]
   w_double_promotion_code = '''
     #include <math.h>
 
