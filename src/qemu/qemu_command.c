@@ -3880,8 +3880,8 @@ qemuBuildHostNetProps(virDomainObj *vm,
     case VIR_DOMAIN_NET_TYPE_ETHERNET: {
         g_auto(virBuffer) buf = VIR_BUFFER_INITIALIZER;
         /* for one tapfd/vhostfd 'fd=' shall be used, for more use 'fds=' */
-        const char *tapfd_field = "s:fd";
-        g_autofree char *tapfd_arg = NULL;
+        //const char *tapfd_field = "s:fd";
+        //g_autofree char *tapfd_arg = NULL;
         //const char *vhostfd_field = "S:vhostfd";
         //g_autofree char *vhostfd_arg = NULL;
         //bool vhost = false;
@@ -3895,12 +3895,12 @@ qemuBuildHostNetProps(virDomainObj *vm,
                 nfds++;
             }
 
-            if (nfds > 1)
-                tapfd_field = "s:fds";
+            //if (nfds > 1)
+                //tapfd_field = "s:fds";
         }
 
         virBufferTrim(&buf, ":");
-        tapfd_arg = virBufferContentAndReset(&buf);
+        //tapfd_arg = virBufferContentAndReset(&buf);
 
         if (netpriv->vhostfds) {
             //vhost = true;
@@ -3926,7 +3926,7 @@ qemuBuildHostNetProps(virDomainObj *vm,
         //                           NULL) < 0)
         if (virJSONValueObjectAdd(&netprops,
                                   "s:type", "tap",
-                                  tapfd_field, tapfd_arg,
+                                  //tapfd_field, tapfd_arg,
                                   "s:vhost", "off",
                                   "s:br", "virbr0",
                                   "s:helper", "/usr/local/libexec/qemu-bridge-helper",
