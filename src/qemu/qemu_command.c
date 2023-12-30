@@ -3928,8 +3928,8 @@ qemuBuildHostNetProps(virDomainObj *vm,
                                   "s:type", "tap",
                                   tapfd_field, tapfd_arg,
                                   "s:vhost", "off",
-                                  "br", "virbr0",
-                                  "helper", "/usr/local/libexec/qemu-bridge-helper",
+                                  "s:br", "virbr0",
+                                  "s:helper", "/usr/local/libexec/qemu-bridge-helper",
                                   //vhostfd_field, vhostfd_arg,
                                   NULL) < 0)
             return NULL;
