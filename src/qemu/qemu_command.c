@@ -7052,6 +7052,7 @@ qemuBuildMachineCommandLine(virCommand *cmd,
         virBufferAsprintf(&buf, ",pcspk-audiodev=%s", audioid);
         break;
     }
+    virBufferAddLit(&buf, ",kernel_irqchip=on");
 
     qemuBuildMachineACPI(&buf, def, qemuCaps);
 
