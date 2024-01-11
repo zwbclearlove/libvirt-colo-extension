@@ -7664,7 +7664,9 @@ qemuProcessLaunch(virConnectPtr conn,
         goto cleanup;
 
     virCommandSetPreExecHook(cmd, qemuProcessHook, &hookData);
-    virCommandSetUmask(cmd, 0x002);
+    // changed
+    // virCommandSetUmask(cmd, 0x002);
+    virCommandSetUmask(cmd, 0x000);
 
     VIR_DEBUG("Setting up process limits");
 
